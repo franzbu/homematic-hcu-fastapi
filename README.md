@@ -12,7 +12,7 @@ Basically there are hardly any limits of what you can do once this FastAPI bridg
 
 <img width="1015" height="657" alt="Screenshot 2026-04-02 at 2 05 24 PM" src="https://github.com/user-attachments/assets/6569d2c0-cbe3-4851-b267-f45e4e9e1b83" />
 
-
+FastAPI can be installed in virtually any linux environment; I have it running withing a lightweight Proxmox LXC Container.
 
 🧠 What the FastAPI bridge does
 👉 It acts as a real-time bridge between Homematic (HCU), Home Assistant, and an ESP device, with a tiny API on top.
