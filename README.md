@@ -32,7 +32,7 @@ To take full control, you must first "silence" the default Homematic behavior:
 #### Setup:
 <p align="center">
   <img width="300" src="https://github.com/user-attachments/assets/1a1277c1-685e-4de8-b3a0-be8bf75c5ca9" />
-  <img width="300" src="https://github.com/user-attachments/assets/1a1277c1-685e-4de8-b3a0-be8bf75c5ca9" />
+  <img width="300" src="https://github.com/user-attachments/assets/f8239acb-2687-47af-885b-85a08f5804da" />
   <img width="300" src="https://github.com/user-attachments/assets/a1e59de0-68b5-44e2-839a-db06cdc391ce" />
 </p>
 
