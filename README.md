@@ -29,7 +29,7 @@ To take full control, you must first "silence" the default Homematic behavior:
 2.  **Create Dummy Automations** for the disabled buttons. You typically need four per device (Short/Long press for both Button 1 and Button 2).
 3.  **Action:** These automations can trigger any meaningless action. For a cleaner setup, use the [Dummy Switch Plugin](https://homematic-forum.de/forum/viewtopic.php?t=86903).
 
-#### Setup Examples:
+#### Setup:
 <p align="center">
   <img width="300" src="https://github.com/user-attachments/assets/1a1277c1-685e-4de8-b3a0-be8bf75c5ca9" />
   <img width="300" src="https://github.com/user-attachments/assets/1a1277c1-685e-4de8-b3a0-be8bf75c5ca9" />
