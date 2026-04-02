@@ -21,7 +21,7 @@ This **FastAPI plugin** restores that missing flexibility. By acting as a bridge
 
 ### 1. Requirements
 * **Environment:** Virtually any Linux environment (runs perfectly in a lightweight Proxmox LXC container).
-* **Registration:** Run `register_hcu_bridge.py` to register the FastAPI bridge with your HCU. Once successful, the plugin will appear in your interface.
+* **Registration:** Run `register_hcu_bridge.py` to register the FastAPI bridge with your HCU. Once successful, the plugin will appear in your interface. During the process the Python script will ask for the activation key that can be generated in the web interface of the HCU (Developer mode). 
 
 <p align="center">
   <img width="1015" alt="HCU Plugin Interface" src="https://github.com/user-attachments/assets/6569d2c0-cbe3-4851-b267-f45e4e9e1b83" />
