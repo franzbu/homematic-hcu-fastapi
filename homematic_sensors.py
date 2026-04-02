@@ -41,8 +41,13 @@ DEVICES = {
 DIMMERS = [v for k, v in DEVICES.items() if k.endswith("_bdt")]
 RELAYS = [v for k, v in DEVICES.items() if k.endswith("_bsm")]
 
-# sensors that are pushed to ESP (Froeling)
-SENSORS = {"greenhouse": "3014F711A00010DF29924792", "outdoor": "3014F711A00010DD89B3AD37", "stubbe": "3014F711A0000CA0C9A7464A", "troge": "3014F711A00010DF29924293"}
+# sensors that are pushed to the ESP (Froeling)
+SENSORS = {
+    "greenhouse": "3014F711A00010DF29924792", 
+    "outdoor": "3014F711A00010DD89B3AD37", 
+    "stubbe": "3014F711A0000CA0C9A7464A", 
+    "troge": "3014F711A00010DF29924293",
+}
 
 # --- RULE MAPPINGS (THE CONTROL PANEL) ---
 
@@ -172,9 +177,10 @@ APP_STATE = {
     "rules": {rid: {"ts": 0, "cnt": 0} for rid in ALL_RULE_IDS},
     "sequence_tracker": {},
     "initialized": False,
-    "greenhouse": {"temp": None, "hum": None}, "outdoor": {"temp": None, "hum": None},
-    "stubbe": {"temp": None, "hum": None}, "troge": {"temp": None, "hum": None}
 }
+# Dynamically add all sensors to the state memory
+for sensor_name in SENSORS:
+    APP_STATE[sensor_name] = {"temp": None, "hum": None}
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("homematic-bridge")
