@@ -29,12 +29,16 @@ DEVICES = {
     # --- Dimmers (BDT) ---
     "blueroom_bdt": "3014F711A00008E4098DDF51",
     "bedroom_bdt": "3014F711A00008E409944C0A",
-    "livingroom_bdt": "3014F711A00008E0C992BD3E",
+    "hallway_bdt": "3014F711A00008E0C992BD3E",
 
     # --- Relays (BSM) ---
     "blueroom_bsm": "3014F711A0000864098F2C93", 
-    "livingroom_bsm": "3014F711A0000864098C1169",
     "lr_east_bsm": "3014F711A0000864098C11F4",
+    "hallway_southeast_bsm": "3014F711A0000864098C143F",
+    "hallway_southwest_bsm": "3014F711A0000864098C12BD",
+    "hallway_northwest_bsm": "3014F711A0000864099E6160",
+    "hallway_switchboard_bsm": "3014F711A0000864098C1169",
+    "entrance_bsm": "3014F711A0000864098F202F",
 }
 
 # Derived automatically to maintain API backward compatibility
@@ -57,10 +61,10 @@ LOCAL_RELAY_RULES = {}
 # actuators that trigger events either in HA or HCU
 UUID_MAP = {
     # --- Blue Room BDT (DF51) ---
-    "43af8376-86fa-42c7-af41-9df4a1da7353": "blueroom_bdt_btn2_short",  # Blue Room BDT: btn2 (up), short
-    "60286a6d-28cf-446f-90eb-5176054f54cb": "blueroom_bdt_btn2_long",   # Blue Room BDT: btn2 (up), long
     "f7849b49-0754-4544-ac92-92721a8f6383": "blueroom_bdt_btn1_short",  # Blue Room BDT: btn1 (down), short
     "6e05f0cf-a49e-4828-a482-a0c638590dad": "blueroom_bdt_btn1_long",   # Blue Room BDT: btn1 (down), long
+    "43af8376-86fa-42c7-af41-9df4a1da7353": "blueroom_bdt_btn2_short",  # Blue Room BDT: btn2 (up), short
+    "60286a6d-28cf-446f-90eb-5176054f54cb": "blueroom_bdt_btn2_long",   # Blue Room BDT: btn2 (up), long
 
     # --- Blue Room BSM (2C93) ---
     "f0587ad6-5a87-42fe-af52-706f918c34b7": "blueroom_bsm_btn1_short",  # Blue Room BSM: btn1 (down), short
@@ -69,29 +73,50 @@ UUID_MAP = {
     "836ea4e2-571e-4e5c-bb36-802efb20b6ea": "blueroom_bsm_btn2_long",   # Blue Room BSM: btn2 (up), long
 
     # --- Bedroom BDT (4C0A) ---
-    "ede983c7-54fb-4567-817e-2ea180c35508": "bedroom_bdt_btn2_short",   # Bedroom BDT: btn2 (up), short
-    "5b6d5b50-493c-46b6-abe3-0424462ecb93": "bedroom_bdt_btn2_long",    # Bedroom BDT: btn2 (up), long
     "084ebc6f-3b0a-483b-934c-19c1fa54b0ac": "bedroom_bdt_btn1_short",   # Bedroom BDT: btn1 (down), short
     "d5480a25-3700-4ca6-b3c0-6b7785ef9231": "bedroom_bdt_btn1_long",    # Bedroom BDT: btn1 (down), long
+    "ede983c7-54fb-4567-817e-2ea180c35508": "bedroom_bdt_btn2_short",   # Bedroom BDT: btn2 (up), short
+    "5b6d5b50-493c-46b6-abe3-0424462ecb93": "bedroom_bdt_btn2_long",    # Bedroom BDT: btn2 (up), long
 
-    # --- Livingroom BDT (BD3E) ---
-    "8843f20a-58d2-4474-a575-4918b22b8510": "livingroom_bdt_btn2_short", # Living Room BDT: btn2 (up), short
-    "6afe420e-baf6-4552-ae69-abe2ee827e29": "livingroom_bdt_btn2_long",  # Living Room BDT: btn2 (up), long
-    "029b70d1-c89d-438f-807d-414427c2b8c0": "livingroom_bdt_btn1_short", # Living Room BDT: btn1 (down), short
-    "2ea0e799-1d06-4ff4-9d09-a5e550b207af": "livingroom_bdt_btn1_long",  # Living Room BDT: btn1 (down), long
 
-    # --- Living Room BSM (1169) ---
-    "239ec689-8bf6-45b6-8c53-735ec03dde8a": "livingroom_bsm_btn1_short", # Living Room BSM: btn1 (down), short
-    "9c39f159-3e2d-4c4d-9e2d-9e87dabdc971": "livingroom_bsm_btn1_long",  # Living Room BSM: btn1 (down), long
-    "6c4f9a16-fe83-4a2d-8dcc-41f1d7121e52": "livingroom_bsm_btn2_short", # Living Room BSM: btn2 (up), short
-    "0a41e1d3-b792-409b-8861-13aea97ecae3": "livingroom_bsm_btn2_long",  # Living Room BSM: btn2 (up), long
+    # --- Hallway BDT (BD3E) ---
+    "85ad5816-382a-46b6-84ca-1faa75680f3a": "hallway_bdt_btn1_short", # btn1 (down), short
+    "d2cb1fab-9a82-407d-b184-5702aa94dc8f": "hallway_bdt_btn1_long",  # btn1 (down), long
+    "b2b85e1f-d9cd-422d-bfd1-9697476f7ab9": "hallway_bdt_btn2_short", # btn2 (up), short
+    "4d3f92bd-0afc-453f-9b25-c6df5269aad5": "hallway_bdt_btn2_long",  # btn2 (up), long
 
-    # --- Living Room East BSM (11F4) ---
-    "3172b1b3-35b7-4c23-8091-4d321e8f25b6": "lr_east_bsm_btn1_short",    # LR East BSM: btn1 (down), short
-    "dc0d9262-c202-4a25-beb4-924711ad1e0d": "lr_east_bsm_btn1_long",     # LR East BSM: btn1 (down), long
-    "253c7d0b-3484-4bb4-81fa-47414785a3fc": "lr_east_bsm_btn2_short",    # LR East BSM: btn2 (up), short
-    "b4900dfd-b81d-4398-beac-cf2d988e54e8": "lr_east_bsm_btn2_long",     # LR East BSM: btn2 (up), long
+    # --- Hallway Southeast BSM (143F) ---
+    "8138dc40-23e3-4ff2-a5b2-a8913a88877d": "hallway_southeast_bsm_btn1_short",    # btn1 (down), short
+    "ef453c0a-d4d3-4723-8744-54e66ae1e533": "hallway_southeast_bsm_btn1_long",     # btn1 (down), long
+    "b572113c-bd4a-4357-a6ce-12b1d79a719a": "hallway_southeast_bsm_btn2_short",    # btn2 (up), short
+    "b62b0e33-12ba-43c4-b296-28825309aa8f": "hallway_southeast_bsm_btn2_long",     # btn2 (up), long
+
+    # --- Hallway Southwest BSM (12BD) ---
+    "17d0749d-abda-4032-921a-185b96f0e805": "hallway_southwest_bsm_btn1_short",    # btn1 (down), short
+    "99c38d7c-43c5-4dca-8602-b71d11ce058d": "hallway_southwest_bsm_btn1_long",     # btn1 (down), long
+    "7d955225-e377-40d0-b456-012908462ba5": "hallway_southwest_bsm_btn2_short",    # btn2 (up), short
+    "e8fb6a7d-0313-4f73-b1fa-8c781ac88fbb": "hallway_southwest_bsm_btn2_long",     # btn2 (up), long
+
+
+    # --- Hallway Northwest BSM (6160) ---
+    "3172b1b3-35b7-4c23-8091-4d321e8f25b6": "hallway_southwest_bsm_btn1_short",    # btn1 (down), short
+    "dc0d9262-c202-4a25-beb4-924711ad1e0d": "hallway_southwest_bsm_btn1_long",     # btn1 (down), long
+    "253c7d0b-3484-4bb4-81fa-47414785a3fc": "hallway_southwest_bsm_btn2_short",    # btn2 (up), short
+    "b4900dfd-b81d-4398-beac-cf2d988e54e8": "hallway_southwest_bsm_btn2_long",     # btn2 (up), longå
+
+    # --- Hallway Switchboard BSM (1169) ---
+    "ab334e1c-7fe7-4079-90f1-800f35ed116c": "hallway_switchboard_bsm_btn1_short",    # btn1 (down), short
+    "048a1fbb-0530-4755-bd77-97dfd6ae6da6": "hallway_switchboard_bsm_btn1_long",     # btn1 (down), long
+    "9f6a1664-107e-4224-8543-9df1b6f849c0": "hallway_switchboard_bsm_btn2_short",    # btn2 (up), short
+    "cdae216d-3402-455e-91c1-845f28037929": "hallway_switchboard_bsm_btn2_long",     # btn2 (up), long
+
+    # --- Entrance BSM (202F) ---
+    "ecaae579-c65b-4463-8ca4-cda5e63a82ae": {"device": "entrance_bsm", "button": "btn1", "type": "short"},
+    "d42db370-c86f-4ba3-af7d-acea3d5b85e3": {"device": "entrance_bsm", "button": "btn1", "type": "long"},
+    "5ce093b0-e138-49d2-a9bb-3fbb28c8569c": {"device": "entrance_bsm", "button": "btn2", "type": "short"},
+    "a729897b-f6a1-4994-8b19-68b62e83715d": {"device": "entrance_bsm", "button": "btn2", "type": "long"},
 }
+
 
 # --- DEVICE RULES (THE LOGIC MATRIX) ---
 DEVICE_RULES = {
@@ -100,57 +125,61 @@ DEVICE_RULES = {
     "blueroom_bdt_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0}, # switch off (0.00) fading light out within 1.0 seconds 
     "blueroom_bdt_btn1_short_short": {"action": "step", "val": -0.05},
     "blueroom_bdt_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0},
-    "blueroom_bdt_btn2_short": {"action": "step", "val": 0.01},
+    "blueroom_bdt_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05},
     "blueroom_bdt_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0},
-    "blueroom_bdt_btn2_short_short": {"action": "step", "val": 0.05},
+    "blueroom_bdt_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10},
     "blueroom_bdt_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0},
+    # HA scripts: 
+    "blueroom_bdt_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "blueroom_bdt_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "blueroom_bdt_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "blueroom_bdt_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
 
     # --- Blue Room BSM (2C93) ---
+    #"blueroom_bsm_btn2_short": {"action": "toggle"}, # example for toggling the internal relay
     "blueroom_bsm_btn1_short": {"script_name": "hmip1_btn1_short"},
     "blueroom_bsm_btn1_long": {"script_name": "hmip1_btn1_long"},
     "blueroom_bsm_btn1_short_short": {"script_name": "hmip1_btn1_short_short"},
     "blueroom_bsm_btn1_short_long": {"script_name": "hmip1_btn1_short_long"},
-    "blueroom_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
-    "blueroom_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
-    #"blueroom_bsm_btn2_short": {"action": "toggle"},
     "blueroom_bsm_btn2_short": {"script_name": "hmip2_btn2_short"},
     "blueroom_bsm_btn2_long": {"script_name": "hmip1_btn2_long"},
     "blueroom_bsm_btn2_short_short": {"script_name": "hmip1_btn2_short_short"},
     "blueroom_bsm_btn2_short_long": {"script_name": "hmip1_btn2_short_long"},
+    # HA scripts: 
+    "blueroom_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "blueroom_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
     "blueroom_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
     "blueroom_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
 
     # --- Bedroom BDT (4C0A) ---
+    # "bedroom_bdt_btn1_short": {"action": "toggle", "id": DEVICES["blueroom_bsm"]}, # example for toggling a bsm relay with another device
     "bedroom_bdt_btn1_short": {"action": "step", "val": -0.01},
     "bedroom_bdt_btn1_long": {"action": "level", "val": 0.00, "ramp": 0.0},
     "bedroom_bdt_btn1_short_short": {"action": "step", "val": -0.05},
     "bedroom_bdt_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 0.0},
-    "bedroom_bdt_btn2_short": {"action": "step", "val": 0.01},
+    "bedroom_bdt_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05},
     "bedroom_bdt_btn2_long": {"action": "level", "val": 0.4, "ramp": 0.0},
-    "bedroom_bdt_btn2_short_short": {"action": "step", "val": 0.05},
+    "bedroom_bdt_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10},
     "bedroom_bdt_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 0.0},
-    
-    # --- Livingroom BDT (BD3E) ---
-    "livingroom_bdt_btn1_short": {"action": "step", "val": -0.01},
-    "livingroom_bdt_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0}, # switch off (0.00) fading light out within 1.0 seconds 
-    "livingroom_bdt_btn1_short_short": {"action": "step", "val": -0.05},
-    "livingroom_bdt_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0},
-    "livingroom_bdt_btn2_short": {"action": "step", "val": 0.01},
-    "livingroom_bdt_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0},
-    "livingroom_bdt_btn2_short_short": {"action": "step", "val": 0.05},
-    "livingroom_bdt_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0},
+    # HA scripts: 
+    "blueroom_bdt_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "blueroom_bdt_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "blueroom_bdt_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "blueroom_bdt_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
 
     # --- Living Room BSM (1169) ---
     "livingroom_bsm_btn1_short": {"script_name": "hmip1_btn1_short"},
     "livingroom_bsm_btn1_long": {"script_name": "hmip1_btn1_long"},
     "livingroom_bsm_btn1_short_short": {"script_name": "hmip1_btn1_short_short"},
     "livingroom_bsm_btn1_short_long": {"script_name": "hmip1_btn1_short_long"},
-    "livingroom_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
-    "livingroom_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
     "livingroom_bsm_btn2_short": {"script_name": "hmip1_btn2_short"},
     "livingroom_bsm_btn2_long": {"script_name": "hmip1_btn2_long"},
     "livingroom_bsm_btn2_short_short": {"script_name": "hmip1_btn2_short_short"},
     "livingroom_bsm_btn2_short_long": {"script_name": "hmip1_btn2_short_long"},
+    # HA scripts: 
+    "livingroom_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "livingroom_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
     "livingroom_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
     "livingroom_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
 
@@ -159,14 +188,107 @@ DEVICE_RULES = {
     "lr_east_bsm_btn1_long": {"script_name": "hmip1_btn1_long"},
     "lr_east_bsm_btn1_short_short": {"script_name": "hmip1_btn1_short_short"},
     "lr_east_bsm_btn1_short_long": {"script_name": "hmip1_btn1_short_long"},
-    "lr_east_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
-    "lr_east_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
     "lr_east_bsm_btn2_short": {"script_name": "hmip2_btn2_short"},
     "lr_east_bsm_btn2_long": {"script_name": "hmip1_btn2_long"},
     "lr_east_bsm_btn2_short_short": {"script_name": "hmip1_btn2_short_short"},
     "lr_east_bsm_btn2_short_long": {"script_name": "hmip1_btn2_short_long"},
+    # HA scripts: 
+    "lr_east_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "lr_east_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
     "lr_east_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
     "lr_east_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+
+    # --- Hallway BDT (BD3E) ---
+    "hallway_bdt_btn1_short": {"action": "step", "val": -0.01},
+    "hallway_bdt_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0}, # switch off (0.00) fading light out within 1.0 seconds 
+    "hallway_bdt_btn1_short_short": {"action": "step", "val": -0.05},
+    "hallway_bdt_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0},
+    "hallway_bdt_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05},
+    "hallway_bdt_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0},
+    "hallway_bdt_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10},
+    "hallway_bdt_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0},
+    # HA scripts: 
+    "hallway_bdt_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "hallway_bdt_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "hallway_bdt_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "hallway_bdt_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+
+    # --- Hallway Southeast BSM (143F) ---
+    "hallway_southeast_bsm_btn1_short": {"action": "step", "val": -0.01, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn1_short_short": {"action": "step", "val": -0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10, "id": DEVICES["hallway_bdt"]},
+    "hallway_southeast_bsm_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    # HA scripts:
+    "hallway_southeast_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "hallway_southeast_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "hallway_southeast_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "hallway_southeast_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+    # --- Hallway Southwest BSM (12BD) --- 
+    "hallway_southwest_bsm_btn1_short": {"action": "step", "val": -0.01, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_short": {"action": "step", "val": -0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    # HA scripts:
+    "hallway_southwest_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "hallway_southwest_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "hallway_southwest_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "hallway_southwest_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+    # --- Hallway Northwest BSM (6160) ---
+    "hallway_southwest_bsm_btn1_short": {"action": "step", "val": -0.01, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_short": {"action": "step", "val": -0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    # HA scripts:
+    "hallway_southwest_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "hallway_southwest_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "hallway_southwest_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "hallway_southwest_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+    # --- Hallway Switchboard BSM (1169) ---
+    "hallway_southwest_bsm_btn1_short": {"action": "step", "val": -0.01, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_short": {"action": "step", "val": -0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10, "id": DEVICES["hallway_bdt"]},
+    "hallway_southwest_bsm_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0, "id": DEVICES["hallway_bdt"]},
+    # HA scripts:
+    "hallway_southwest_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    "hallway_southwest_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    "hallway_southwest_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    "hallway_southwest_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
+
+    # --- Entrance BSM (202F) ---
+    #"entrance_bsm_btn1_short": {"action": "step", "val": -0.01, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn1_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn1_short_short": {"action": "step", "val": -0.05, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn1_short_long": {"action": "level", "val": 0.00, "ramp": 1.0, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn2_short": {"action": "step", "val": 0.01, "on_zero": 0.05, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn2_long": {"action": "level", "val": 0.4, "ramp": 1.0, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn2_short_short": {"action": "step", "val": 0.05, "on_zero": 0.10, "id": "3014F711A00008E4098DDF51"},
+    #"entrance_bsm_btn2_short_long": {"action": "level", "val": 0.07, "ramp": 1.0, "id": "3014F711A00008E4098DDF51"},
+    # HA scripts:
+    #"entrance_bsm_btn1_long_short": {"script_name": "hmip1_btn1_long_short"},
+    #"entrance_bsm_btn1_long_long": {"script_name": "hmip1_btn1_long_long"},
+    #"entrance_bsm_btn2_long_short": {"script_name": "hmip1_btn2_long_short"},
+    #"entrance_bsm_btn2_long_long": {"script_name": "hmip1_btn2_long_long"},
 }
 
 # --- STATE ---
@@ -235,7 +357,8 @@ async def push_to_esp(sensor_name: str, temp: float, hum: int):
         name_cap = sensor_name.capitalize()
         if temp is not None: await http_client.post(f"http://{ESP_IP}/number/{quote(f'RX Temp {name_cap}')}/set?value={temp}", content="", timeout=2.0)
         if hum is not None: await http_client.post(f"http://{ESP_IP}/number/{quote(f'RX Hum {name_cap}')}/set?value={hum}", content="", timeout=2.0)
-    except Exception: pass
+    except Exception as e:
+        logger.warning(f"⚠️ Could not push sensor {sensor_name} to ESP: {e}")
 
 # --- SEQUENCE TRACKER LOGIC ---
 async def process_button_press(websocket, action_key: str):
@@ -267,18 +390,27 @@ async def process_button_press(websocket, action_key: str):
             if "script_name" in rule:
                 await trigger_ha_script(rule["script_name"])
             elif "action" in rule:
-                device_name = tracker_key.rsplit('_', 1)[0] # Extracts "blueroom_bdt" from "blueroom_bdt_btn1"
-                dev_id = DEVICES.get(device_name)
+                # 1. Determine WHICH device to control (Rule ID override or Button's device)
+                device_name = tracker_key.rsplit('_', 1)[0]
+                target_dev_id = rule.get("id") or DEVICES.get(device_name)
                 
-                if device_name.endswith("_bdt"):
+                # 2. Determine behavior based on the ACTION requested, not the button's name
+                if rule["action"] in ["step", "level"]:
+                    # Safely get current dimmer state, defaulting to 0.0 if not yet tracked
+                    dimmer_state = APP_STATE["dimmers"].get(target_dev_id, {"level": 0.0})
+                    curr = dimmer_state["level"]
+                    
                     if rule["action"] == "step":
-                        curr = APP_STATE["dimmers"][dev_id]["level"]
-                        await set_dimmer_level(websocket, dev_id, curr + rule["val"])
+                        if curr == 0.0 and "on_zero" in rule:
+                            target = rule["on_zero"]
+                        else:
+                            target = curr + rule["val"]
+                        await set_dimmer_level(websocket, target_dev_id, target)
                     elif rule["action"] == "level":
-                        await set_dimmer_level(websocket, dev_id, rule["val"], rule.get("ramp", 0.0))
-                elif device_name.endswith("_bsm"):
-                    if rule["action"] == "toggle":
-                        await toggle_hcu_relay(websocket, dev_id)
+                        await set_dimmer_level(websocket, target_dev_id, rule["val"], rule.get("ramp", 0.0))
+                        
+                elif rule["action"] == "toggle":
+                    await toggle_hcu_relay(websocket, target_dev_id)
         else:
             logger.info(f"⚠️ No action defined for {rule_key}")
 
